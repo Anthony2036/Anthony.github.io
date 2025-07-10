@@ -16,7 +16,7 @@
         /* Body styles: font, background, color, and overflow */
         /* Prioritize Apple system fonts for an Apple-like style, including SF Pro Display */
         body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-family: 'SF Pro Display', -apple-system, BlinkMacMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             background: #000;
             color: #fff;
             overflow-x: hidden;
@@ -42,6 +42,7 @@
             justify-content: space-between; /* Space between logo and links */
             align-items: center;
             padding: 0 20px;
+            /* position: relative; Removed as it was for dropdown positioning */
         }
 
         /* Logo styling */
@@ -57,6 +58,8 @@
             display: flex;
             list-style: none; /* Remove bullet points */
             gap: 30px; /* Space between links */
+            /* margin-right: auto; Removed as it was for pushing dropdown to the right */
+            /* padding-left: 30px; Removed as it was for dropdown spacing */
         }
 
         /* Individual Navigation Link styling */
@@ -731,6 +734,8 @@
         .custom-modal-content button:hover {
             background: #005bb5;
         }
+
+        /* Dropdown menu specific styles (removed) */
     </style>
     <!-- Puppertino CSS Link -->
     <link rel="stylesheet" href="https://codedgar.github.io/Puppertino/css/puppertino.min.css">
@@ -753,6 +758,8 @@
                 <li><a href="#apps">Tiktok</a></li>
                 <li><a href="#support">Kontakt</a></li>
             </ul>
+
+            <!-- Dropdown Menu (removed) -->
         </div>
     </nav>
 
@@ -791,7 +798,8 @@
 
                 <!-- UI Card 2 -->
                 <div class="vision-card w-full h-[500px] scroll-animated scale-up" data-delay="200">
-                    <img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5LcjvjvZ-iAdOXa5pSPxLwDqZleNZasA6t3vgqRDo44SYfPNagNtoqkL1-kYziTA2qYzIxRTLzZTmABb8inpmQQdjavK8q9f1ZiDWm8uzUNMG4vbGd4Td2h5PelToFKhqg2mEoEO5jHxLHXYjS0xOm9ehyz5aNlxNppxONKS5woVQPT7isTPotvkwX81pPDANQdj6EfAfd5ZZLYDmPvy1xmenlwjC81c0Ci6d0CgA6CqDcRnECPqj8IMAC-0q75bUpuB_Z1qC94"/>
+                    <!-- Image updated to anthony3.jpg from assets folder -->
+                    <img alt="[Bild von Anthony im Freien]" class="w-full h-full object-cover" src="assets/anthony3.jpg"/>
                     <div class="absolute top-0 left-0 w-full p-5 flex justify-between items-center">
                         <div class="flex items-center space-x-2 glass-ui">
                             <span class="material-icons bg-white/10 rounded-full p-1 text-lg">chevron_left</span>
@@ -809,7 +817,8 @@
 
                 <!-- UI Card 3 -->
                 <div class="vision-card w-full h-[500px] scroll-animated scale-up" data-delay="300">
-                    <img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArSAlxW0xKoYCrvjYIZLYdAm_urei6G4UH3df_5wLiSRphJF1Bol7NI2D4JMt2fbmS1kFHhXpa8-r7hL7bhUNSX-fiprncme4IPr3x8jz04YJkZBgadlLRWKGqJsaL0Voq09dNrlzlXUJEo7wPdoBbWoiX3bX6ONiUGZwAysNccCGbWAmzEbZAp-n2lqF8kX9iMwL7j6dqopfrM5SjcGEOtQ5noc_Btl8ljmjcebBMBcjhUsA_e-iRQwnTrArlwExkaBNnoUPCSq4"/>
+                    <!-- Image updated to Anthony2.jpg from assets folder -->
+                    <img alt="[Bild von Anthony im Freien]" class="w-full h-full object-cover" src="assets/Anthony2.jpg"/>
                     <div class="absolute top-0 left-0 w-full p-5 flex justify-between items-center">
                         <div class="flex items-center space-x-2 glass-ui">
                             <span class="material-icons bg-white/10 rounded-full p-1 text-lg">chevron_left</span>
@@ -999,6 +1008,7 @@
         </div>
     </div>
 
+    <!-- Alpine.js script (removed) -->
     <script>
         // Function to show the custom alert modal
         function showCustomAlert(message) {
@@ -1013,6 +1023,24 @@
             const overlay = document.getElementById('customAlertOverlay');
             overlay.classList.remove('visible');
         }
+
+        // Dropdown menu functionality (removed)
+        /*
+        function selectItem(element, text) {
+            document.getElementById('selected-item').textContent = text;
+            // Remove active classes and hide checkmarks from all items
+            document.querySelectorAll('.dropdown-menu a').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.checkmark').classList.add('invisible');
+            });
+            // Add active classes and show checkmark for the clicked item
+            element.classList.add('active');
+            element.querySelector('.checkmark').classList.remove('invisible');
+            // Close dropdown
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.__x.$data.open = false;
+        }
+        */
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
