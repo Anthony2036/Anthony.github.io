@@ -534,6 +534,8 @@
             justify-content: center;
             width: 40px;
             height: 40px;
+            /* Add pointer cursor to indicate clickability */
+            cursor: pointer; 
         }
 
         /* New Features Section Styles */
@@ -663,6 +665,72 @@
         .scroll-animated[data-delay="800"] { transition-delay: 0.8s; }
         .scroll-animated[data-delay="900"] { transition-delay: 0.9s; }
         .scroll-animated[data-delay="1000"] { transition-delay: 1.0s; }
+        
+        /* Custom Modal Styles */
+        .custom-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .custom-modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .custom-modal-content {
+            background: #2a2a2a;
+            color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .custom-modal-overlay.visible .custom-modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .custom-modal-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .custom-modal-content p {
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .custom-modal-content button {
+            background: #0071e3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .custom-modal-content button:hover {
+            background: #005bb5;
+        }
     </style>
     <!-- Puppertino CSS Link -->
     <link rel="stylesheet" href="https://codedgar.github.io/Puppertino/css/puppertino.min.css">
@@ -696,7 +764,7 @@
         </div>
     </section>
 
-    <!-- VisionOS Gallery Section -->
+    <!-- VisionOS Gallery Section (Replaces previous section under hero) -->
     <section class="vision-gallery-section" id="profiles">
         <h2 class="section-title scroll-animated" data-delay="0">Unsere Profile</h2> <!-- Section title -->
         
@@ -704,15 +772,16 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16">
                 <!-- UI Card 1 -->
                 <div class="vision-card w-full h-[500px] scroll-animated scale-up" data-delay="100">
-                    <img alt="Ein Model, das auf einem grünen Sofa posiert" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjzOo7uRuMqFgU5oceuFKdpSgYY6F9sQq1vQognV4YmwUKYp43Ns9KbBppJe9ZNTp861khFwchfdJhZv5MhUR1knpAKjW2oq4vmo97UAzdQapm_yKEagb-qdaR0KuczMRufzQFXkBTlxf18RwhNiQ-ldjPu0QGSzJLFJOjLf9VI3_gifqYoaV6kSDwUYupGR43O9hd_H0OC3eqUvaPN5lSH1jegvYErPe1noHyFB1HBFdgbOjBRaRugPfo2o7ubheHgDbosHquUd8"/>
+                    <!-- Image updated to Anthony1.jpg from assets folder -->
+                    <img alt="[Bild von Anthony]" class="w-full h-full object-cover" src="assets/Anthony1.jpg"/>
                     <div class="absolute top-0 left-0 w-full p-5 flex justify-between items-center">
                         <div class="flex items-center space-x-2 glass-ui">
                             <span class="material-icons bg-white/10 rounded-full p-1 text-lg">chevron_left</span>
                             <span class="font-semibold text-sm pr-2">Anthony</span>
                         </div>
-                        <div class="glass-ui-icon rounded-full">
+                        <button class="glass-ui-icon rounded-full" onclick="showCustomAlert('Menü für Anthony geklickt!')">
                             <span class="material-icons text-lg">more_horiz</span>
-                        </div>
+                        </button>
                     </div>
                     <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent">
                         <h3 class="font-bold text-2xl">Madrid</h3>
@@ -722,15 +791,15 @@
 
                 <!-- UI Card 2 -->
                 <div class="vision-card w-full h-[500px] scroll-animated scale-up" data-delay="200">
-                    <img alt="Nahaufnahme eines Models mit Tattoos" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5LcjvjvZ-iAdOXa5pSPxLwDqZleNZasA6t3vgqRDo44SYfPNagNtoqkL1-kYziTA2qYzIxRTLzZTmABb8inpmQQdjavK8q9f1ZiDWm8uzUNMG4vbGd4Td2h5PelToFKhqg2mEoEO5jHxLHXYjS0xOm9ehyz5aNlxNppxONKS5woVQPT7isTPotvkwX81pPDANQdj6EfAfd5ZZLYDmPvy1xmenlwjC81c0Ci6d0CgA6CqDcRnECPqj8IMAC-0q75bUpuB_Z1qC94"/>
+                    <img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5LcjvjvZ-iAdOXa5pSPxLwDqZleNZasA6t3vgqRDo44SYfPNagNtoqkL1-kYziTA2qYzIxRTLzZTmABb8inpmQQdjavK8q9f1ZiDWm8uzUNMG4vbGd4Td2h5PelToFKhqg2mEoEO5jHxLHXYjS0xOm9ehyz5aNlxNppxONKS5woVQPT7isTPotvkwX81pPDANQdj6EfAfd5ZZLYDmPvy1xmenlwjC81c0Ci6d0CgA6CqDcRnECPqj8IMAC-0q75bUpuB_Z1qC94"/>
                     <div class="absolute top-0 left-0 w-full p-5 flex justify-between items-center">
                         <div class="flex items-center space-x-2 glass-ui">
                             <span class="material-icons bg-white/10 rounded-full p-1 text-lg">chevron_left</span>
                             <span class="font-semibold text-sm pr-2">Valeria</span>
                         </div>
-                        <div class="glass-ui-icon rounded-full">
+                        <button class="glass-ui-icon rounded-full" onclick="showCustomAlert('Menü für Valeria geklickt!')">
                             <span class="material-icons text-lg">more_horiz</span>
-                        </div>
+                        </button>
                     </div>
                     <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent">
                         <h3 class="font-bold text-2xl">Barcelona</h3>
@@ -740,15 +809,15 @@
 
                 <!-- UI Card 3 -->
                 <div class="vision-card w-full h-[500px] scroll-animated scale-up" data-delay="300">
-                    <img alt="Ein Model mit stylischer Sonnenbrille" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArSAlxW0xKoYCrvjYIZLYdAm_urei6G4UH3df_5wLiSRphJF1Bol7NI2D4JMt2fbmS1kFHhXpa8-r7hL7bhUNSX-fiprncme4IPr3x8jz04YJkZBgadlLRWKGqJsaL0Voq09dNrlzlXUJEo7wPdoBbWoiX3bX6ONiUGZwAysNccCGbWAmzEbZAp-n2lqF8kX9iMwL7j6dqopfrM5SjcGEOtQ5noc_Btl8ljmjcebBMBcjhUsA_e-iRQwnTrArlwExkaBNnoUPCSq4"/>
+                    <img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArSAlxW0xKoYCrvjYIZLYdAm_urei6G4UH3df_5wLiSRphJF1Bol7NI2D4JMt2fbmS1kFHhXpa8-r7hL7bhUNSX-fiprncme4IPr3x8jz04YJkZBgadlLRWKGqJsaL0Voq09dNrlzlXUJEo7wPdoBbWoiX3bX6ONiUGZwAysNccCGbWAmzEbZAp-n2lqF8kX9iMwL7j6dqopfrM5SjcGEOtQ5noc_Btl8ljmjcebBMBcjhUsA_e-iRQwnTrArlwExkaBNnoUPCSq4"/>
                     <div class="absolute top-0 left-0 w-full p-5 flex justify-between items-center">
                         <div class="flex items-center space-x-2 glass-ui">
                             <span class="material-icons bg-white/10 rounded-full p-1 text-lg">chevron_left</span>
                             <span class="font-semibold text-sm pr-2">Chloe</span>
                         </div>
-                        <div class="glass-ui-icon rounded-full">
+                        <button class="glass-ui-icon rounded-full" onclick="showCustomAlert('Menü für Chloe geklickt!')">
                             <span class="material-icons text-lg">more_horiz</span>
-                        </div>
+                        </button>
                     </div>
                     <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent">
                         <h3 class="font-bold text-2xl">Ibiza</h3>
@@ -815,7 +884,7 @@
             <div class="feature-row">
                 <div class="feature-content-block scroll-animated" data-delay="100">
                     <div class="feature-image-wrapper">
-                        <img src="https://placehold.co/600x400/3498db/ffffff?text=Interaktive+Karten" alt="[Bild von interaktiven Karten]" class="pt-image-rounded-2x">
+                        <img src="https://placehold.co/600x400/3498db/ffffff?text=Interaktive+Karten" alt="" class="pt-image-rounded-2x">
                     </div>
                     <div class="feature-text-block">
                         <h3>Interaktive Karten</h3>
@@ -827,7 +896,7 @@
             <div class="feature-row reverse">
                 <div class="feature-content-block scroll-animated" data-delay="200">
                     <div class="feature-image-wrapper">
-                        <img src="https://placehold.co/600x400/2ecc71/ffffff?text=Erweiterte+Suche" alt="[Bild von erweiterter Suche]" class="pt-image-rounded-2x">
+                        <img src="https://placehold.co/600x400/2ecc71/ffffff?text=Erweiterte+Suche" alt="" class="pt-image-rounded-2x">
                     </div>
                     <div class="feature-text-block">
                         <h3>Erweiterte Suchfunktionen</h3>
@@ -839,7 +908,7 @@
             <div class="feature-row">
                 <div class="feature-content-block scroll-animated" data-delay="300">
                     <div class="feature-image-wrapper">
-                        <img src="https://placehold.co/600x400/e74c3c/ffffff?text=Personalisierte+Feeds" alt="[Bild von personalisierten Feeds]" class="pt-image-rounded-2x">
+                        <img src="https://placehold.co/600x400/e74c3c/ffffff?text=Personalisierte+Feeds" alt="" class="pt-image-rounded-2x">
                     </div>
                     <div class="feature-text-block">
                         <h3>Personalisierte Feeds</h3>
@@ -921,7 +990,30 @@
         </div>
     </footer>
 
+    <!-- Custom Modal Structure -->
+    <div id="customAlertOverlay" class="custom-modal-overlay">
+        <div class="custom-modal-content">
+            <h3 id="customAlertTitle">Menüoptionen</h3>
+            <p id="customAlertMessage">Dies ist ein Beispiel für eine benutzerdefinierte Nachricht.</p>
+            <button onclick="hideCustomAlert()">OK</button>
+        </div>
+    </div>
+
     <script>
+        // Function to show the custom alert modal
+        function showCustomAlert(message) {
+            const overlay = document.getElementById('customAlertOverlay');
+            const messageElement = document.getElementById('customAlertMessage');
+            messageElement.textContent = message;
+            overlay.classList.add('visible');
+        }
+
+        // Function to hide the custom alert modal
+        function hideCustomAlert() {
+            const overlay = document.getElementById('customAlertOverlay');
+            overlay.classList.remove('visible');
+        }
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1057,36 +1149,6 @@
         `;
         document.head.appendChild(style);
 
-        // Tabs functionality for p-tabs-demo-section (removed as per user request)
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     const tabsContainers = document.querySelectorAll('.p-tabs-container');
-        //     tabsContainers.forEach(container => {
-        //         const tabs = container.querySelectorAll('.p-tab');
-        //         const panels = container.querySelectorAll('.p-panel');
-
-        //         tabs.forEach(tab => {
-        //             tab.addEventListener('click', function(e) {
-        //                 e.preventDefault();
-
-        //                 // Remove active class from all tabs and panels in this container
-        //                 tabs.forEach(t => t.classList.remove('p-is-active'));
-        //                 panels.forEach(p => p.classList.remove('p-is-active'));
-
-        //                 // Add active class to the clicked tab
-        //                 this.classList.add('p-is-active');
-
-        //                 // Get the data-panel attribute to find the corresponding panel
-        //                 const targetPanelId = this.dataset.panel;
-        //                 const targetPanel = document.getElementById(targetPanelId);
-
-        //                 // Add active class to the target panel
-        //                 if (targetPanel) {
-        //                     targetPanel.classList.add('p-is-active');
-        //                 }
-        //             });
-        //         });
-        //     });
-        // });
     </script>
 </body>
 </html>
