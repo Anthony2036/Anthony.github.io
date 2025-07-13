@@ -16,7 +16,7 @@
         /* Body styles: font, background, color, and overflow */
         /* Prioritize Apple system fonts for an Apple-like style, including SF Pro Display */
         body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             background: #000;
             color: #fff;
             overflow-x: hidden;
@@ -249,69 +249,145 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Visual Intelligence Section styles */
-        .visual-intelligence {
-            padding: 120px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple gradient background */
+        /* --- Apple Music Playlist Section Styles --- */
+        :root {
+            --apple-bg: #000; /* Dark background for the section */
+            --apple-card-bg: #1a1a1a; /* Darker card background */
+            --apple-text-primary: #ffffff; /* White text */
+            --apple-text-secondary: #cccccc; /* Light gray text */
+            --apple-blue: #007aff; /* Apple blue remains */
+            --apple-border: #333333; /* Darker border for dark theme */
         }
-
-        /* Visual Intelligence Content styling */
-        .vi-content {
-            text-align: center;
-            margin-bottom: 80px;
+        .apple-music-section {
+            padding: 60px 0; /* Reduced padding for shorter section */
+            background-color: var(--apple-bg);
+            color: var(--apple-text-primary);
         }
-
-        /* Visual Intelligence Heading styling */
-        .vi-content h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        .apple-music-section .section-title {
+            color: var(--apple-text-primary);
+            -webkit-text-fill-color: var(--apple-text-primary);
+            background: none;
+            margin-bottom: 30px; /* Halved margin-bottom */
         }
-
-        /* Visual Intelligence Paragraph styling */
-        .vi-content p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Interactive Demo Grid layout */
-        .interactive-demo {
+        .apple-music-card {
+            background-color: var(--apple-card-bg);
+            border-radius: 1.5rem; /* 24px */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid columns */
-            gap: 30px;
-            margin-top: 60px;
+            grid-template-columns: 1fr;
         }
-
-        /* Demo Card styling */
-        .demo-card {
-            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-            backdrop-filter: blur(10px); /* Blur effect */
-            border-radius: 15px; /* Rounded corners */
-            padding: 30px;
+        @media (min-width: 768px) {
+            .apple-music-card {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .apple-music-card-left {
+            padding: 2rem 3rem; /* 32px 48px */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            transition: all 0.3s ease; /* Smooth transitions for hover effects */
-            cursor: pointer;
         }
-
-        /* Demo Card hover effects */
-        .demo-card:hover {
-            transform: scale(1.05); /* Slightly enlarge on hover */
-            background: rgba(255, 255, 255, 0.2); /* Slightly less transparent */
+        .apple-music-card-right {
+            background-color: #0a0a0a; /* Slightly different dark background for contrast */
+            padding: 2rem 3rem;
         }
-
-        /* Demo Icon styling */
-        .demo-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%; /* Circular icon */
-            margin: 0 auto 20px;
+        .apple-music-image {
+            width: 12rem; /* 192px */
+            height: 12rem; /* 192px */
+            flex-shrink: 0;
+        }
+        @media (min-width: 768px) {
+            .apple-music-image {
+                width: 16rem; /* 256px */
+                height: 16rem; /* 256px */
+            }
+        }
+        .apple-music-image img {
+            border-radius: 0.75rem; /* 12px */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .apple-music-title {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 700;
+            color: var(--apple-text-primary);
+            letter-spacing: -0.025em;
+        }
+        .apple-music-subtitle {
+            font-size: 1.125rem; /* 18px */
+            color: var(--apple-text-secondary);
+        }
+        .apple-music-button {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            gap: 0.5rem;
+            background-color: var(--apple-blue);
+            color: white;
+            font-weight: 600;
+            padding: 0.625rem 1.5rem; /* 10px 24px */
+            border-radius: 9999px; /* full rounded */
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-out; /* Added transform for animation */
+            outline: none;
+            text-decoration: none; /* Ensure it looks like a button, not a link */
         }
+        .apple-music-button:hover {
+            background-color: rgba(0, 122, 255, 0.9);
+        }
+        /* Animation for button click */
+        .apple-music-button.clicked {
+            transform: scale(0.95); /* Slightly shrink on click */
+            transition: transform 0.1s ease-out; /* Quick transition for click feedback */
+        }
+        .apple-music-section-title {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 600;
+            color: var(--apple-text-primary);
+        }
+        .apple-music-text-secondary {
+            color: var(--apple-text-secondary);
+        }
+        .apple-music-border-top {
+            border-top: 1px solid var(--apple-border);
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .apple-music-list-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .apple-music-list-item img {
+            width: 3rem; /* 48px */
+            height: 3rem; /* 48px */
+            border-radius: 9999px; /* full rounded */
+            object-fit: cover;
+        }
+        .apple-music-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 0.75rem;
+        }
+        .apple-music-stat-card {
+            background-color: #2a2a2a; /* Darker background for stats cards */
+            border-radius: 0.5rem; /* 8px */
+            padding: 0.75rem; /* 12px */
+            border: 1px solid var(--apple-border);
+        }
+        .apple-music-stat-card p:first-child {
+            font-size: 0.875rem; /* 14px */
+            color: var(--apple-text-secondary);
+        }
+        .apple-music-stat-card p:last-child {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 600;
+            color: var(--apple-text-primary);
+        }
+
 
         /* Messages Section styles */
         .messages-section {
@@ -451,14 +527,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Parallax Effect (background attachment fixed) */
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
         /* Loading Spinner animation */
         .loading-spinner {
             width: 40px;
@@ -484,7 +552,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh; /* Make section take full viewport height */
+            /* Removed min-height: 100vh; for shorter section */
             /* Background changed to a linear gradient from black to dark blue, with blue starting higher */
             background: linear-gradient(to bottom, #000000 0%, #003366 70%); /* Stronger blue starts at 70% of the section height */
         }
@@ -855,7 +923,7 @@
     <!-- Google Fonts for Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <!-- SF Pro Display Font -->
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;700&amp;family=SF+Pro+Text:wght@400;600&amp;display=swap" rel="stylesheet"/>
     <!-- Tailwind CSS with plugins -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 </head>
@@ -867,7 +935,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Instagram</a></li>
                 <li><a href="#profiles">Snapchat</a></li> <!-- Link updated to #profiles -->
-                <li><a href="#intelligence">Threads</a></li>
+                <li><a href="#apple-music-section">Apple Music</a></li>
                 <li><a href="#apps">Tiktok</a></li>
                 <li><a href="#support">Kontakt</a></li>
             </ul>
@@ -958,35 +1026,82 @@
         </div>
     </div>
 
-    <!-- Visual Intelligence Section -->
-    <section class="visual-intelligence" id="intelligence">
+    <!-- Apple Music Playlist Section -->
+    <section class="apple-music-section" id="apple-music-section">
+        <h2 class="section-title scroll-animated fade-in-up" data-delay="0">Meine Apple Music Playlist</h2>
         <div class="container">
-            <div class="vi-content scroll-animated fade-in-up" data-delay="0">
-                <h2>Mach mehr mit visueller Intelligenz.</h2>
-                <p>Mit visueller Intelligenz auf dem iPhone kannst du jetzt etwas suchen, Fragen stellen und mit Inhalten auf deinem Display interagieren.</p>
-            </div>
-            
-            <div class="interactive-demo">
-                <div class="demo-card scroll-animated scale-up" data-delay="100">
-                    <div class="demo-icon">🔍</div> <!-- Emoji icon -->
-                    <h3>Live Übersetzung</h3>
-                    <p>Texte in Nachrichten automatisch übersetzen lassen</p>
-                </div>
-                <div class="demo-card scroll-animated scale-up" data-delay="200">
-                    <div class="demo-icon">🎨</div> <!-- Emoji icon -->
-                    <h3>Image Playground</h3>
-                    <p>Kombiniere Emojis und Beschreibungen für völlig neue Bilder</p>
-                </div>
-                <div class="demo-card scroll-animated scale-up" data-delay="300">
-                    <div class="demo-icon">⚡</div> <!-- Emoji icon -->
-                    <h3>Intelligente Aktionen</h3>
-                    <p>Workflows in Kurzbefehlen mit Apple Intelligence</p>
-                </div>
-                <div class="demo-card scroll-animated scale-up" data-delay="400">
-                    <div class="demo-icon">📞</div> <!-- Emoji icon -->
-                    <h3>Anruffilter</h3>
-                    <p>Automatische Verwaltung unerwünschter Anrufe</p>
-                </div>
+            <div class="flex items-center justify-center p-4"> <!-- Removed min-h-screen -->
+                <main class="w-full max-w-4xl mx-auto">
+                    <div class="apple-music-card scroll-animated fade-in-up" data-delay="100">
+                        <div class="apple-music-card-left">
+                            <div class="apple-music-image">
+                                <img alt="Playlist cover art for Rap Life featuring a photo of a rapper" class="rounded-xl w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7ppsWmqm5m6HTiics9PiBlKhc7hyzcw0IjKnwK9-8Cc58qaER5O5Fn907iNvnmvpSgwxOvgXQZ7WwA13gct4vpS2mWBW5C7yMxTaf55H_vXRu4UrtwywDlElt3w7hkPKU6p9kS8CVAEb2TfT2BxEK6RQQitukFt_CHHwHwaav17AiFLiMPvnldw1n8ky3nfxhhqA5G480LMdzRt_Lx8diE6W9vt2TcpjZM2Oo82hf-mVmZe_LDZV9Zcp_mjymq7C1lo70KEjCkDg"/>
+                            </div>
+                            <div class="mt-6 space-y-1">
+                                <h1 class="apple-music-title">Rap Life</h1>
+                                <p class="apple-music-subtitle">Apple Music Hip-Hop</p>
+                            </div>
+                            <div class="mt-4">
+                                <!-- Changed button to anchor tag and added click animation -->
+                                <a href="https://music.apple.com/de/playlist/nasheed/pl.u-KVXBk1BC12PdKza" target="_blank" class="apple-music-button" id="appleMusicButton">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"></path>
+                                    </svg>
+                                    <span>Listen on Apple Music</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="apple-music-card-right">
+                            <div class="space-y-6">
+                                <div>
+                                    <h2 class="apple-music-section-title">About this playlist</h2>
+                                    <p class="apple-music-text-secondary mt-2 leading-relaxed">The best of what's next. Our editors are always updating this playlist with new music. If you hear something you like, add it to your library.</p>
+                                </div>
+                                <div class="apple-music-border-top"></div>
+                                <div>
+                                    <h3 class="apple-music-section-title">Featured Artists</h3>
+                                    <ul class="mt-3 space-y-3">
+                                        <li class="apple-music-list-item">
+                                            <img alt="Artist photo" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2Ga40sjFTG8TB0hTNSIBCRF2oBKIDr_rJRCV2Nkx6GNwTAZwomjpUadfsUJO--LXiK-MOrh0adFnk-Zf8Q2Pqw6weAFtXqEf8WIPR1OqmvrfsEp6fmyA8UVlP41lMoYoZbek2CWxvoqbOD_8tyWhA1NaA6fqvjutWkR-GYfX6LyGqWsZ5bc7c1GC8yHaYLjx_VXDB6zV1aFkQg78Hq514OH8iD6UxYQ6uKK4Lsus_2IvHUc0KksxrqQD9uQPw3IviqFAAk3zuGA4"/>
+                                            <div>
+                                                <p class="font-semibold text-[var(--apple-text-primary)]">Kendrick Lamar</p>
+                                                <p class="text-sm apple-music-text-secondary">Compton, CA</p>
+                                            </div>
+                                        </li>
+                                        <li class="apple-music-list-item">
+                                            <img alt="Artist photo" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvl2KhFKf4kR_BT32ggIPkNkO3iuESSG14d72wEyGea1SrILBlbFGiyTy_cSSlwJQsfNxAD4orhoAFo2Y5im_YDqyj8kqgauzhBOkx8MFexMIdTK9rvfq1z0bJl4wjJeDcmZIvzwd3FOm98EzWIAPXD21KAtjm_8zF5uDqgiBLH5xamCffRBQx3urTrGSiYlzuWWOp4neEAHk4HX8pib0ILygRwO7V-MzDNtS6kzZswRkMRDBW6viX6APllGTP075lrf6PIacPxK8"/>
+                                            <div>
+                                                <p class="font-semibold text-[var(--apple-text-primary)]">Drake</p>
+                                                <p class="text-sm apple-music-text-secondary">Toronto, ON</p>
+                                            </div>
+                                        </li>
+                                        <li class="apple-music-list-item">
+                                            <img alt="Artist photo" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2A2TmYK1w43wBJAu_CrSMR1u4vKlOJqZXfInJA24uZ0K1GslGHRaiHYVJWNjY7Ib-ObyVzyCkb8Neq8oji_tsFTOdG1k3upL_Xj9jENMFDKKoPB8fsyRxEJIYwL22-AZAfL2c6uSWSnl45JfCdFn4W4ZhMgwMdJuQK51bmgM9mJLPFiOpLaZNxk4kAoTSyl2iwMKVESSJ2fi-Zr9DqO0iq6FVceIdX-X0pgoNUb-kFvF77Niv0S8cXX5ICmf8k2nBRji-w1uV4Jg"/>
+                                            <div>
+                                                <p class="font-semibold text-[var(--apple-text-primary)]">J. Cole</p>
+                                                <p class="text-sm apple-music-text-secondary">Fayetteville, NC</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="apple-music-border-top"></div>
+                                <div>
+                                    <h3 class="apple-music-section-title">Playlist Stats</h3>
+                                    <div class="apple-music-stats-grid">
+                                        <div class="apple-music-stat-card">
+                                            <p class="apple-music-text-secondary">Songs</p>
+                                            <p class="text-2xl font-semibold text-[var(--apple-text-primary)]">50</p>
+                                        </div>
+                                        <div class="apple-music-stat-card">
+                                            <p class="apple-music-text-secondary">Duration</p>
+                                            <p class="text-2xl font-semibold text-[var(--apple-text-primary)]">2h 45m</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
             </div>
         </div>
     </section>
@@ -1223,29 +1338,11 @@
             scrollObserver.observe(el); // Start observing
         });
 
-        // Demo card interactions (re-trigger slide-in animation on click)
-        document.querySelectorAll('.demo-card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.animation = 'none'; // Reset animation
-                setTimeout(() => {
-                    this.style.animation = 'slideIn 0.5s ease-out'; // Re-apply animation
-                }, 10);
-            });
-        });
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset; // Get scroll position
-            const hero = document.querySelector('.hero');
-            const rate = scrolled * -0.5; // Adjust parallax speed
-            hero.style.transform = `translateY(${rate}px)`; // Apply parallax effect
-        });
-
         // Dynamic message animation for messages demo
         function addMessage() {
             const messagesDemo = document.querySelector('.messages-demo');
             const messages = [
-                'AutoMix in Apple Music ist fantastisch! �',
+                'AutoMix in Apple Music ist fantastisch! 🎵',
                 'Die neuen Liquid Glass Symbole sehen toll aus! ✨',
                 'Visuelle Intelligenz macht alles so viel einfacher 🤖'
             ];
@@ -1267,37 +1364,18 @@
         // Add new message every 5 seconds
         setInterval(addMessage, 5000);
 
-        // CTA button interactions (ripple effect on click)
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent default button click behavior
-                
-                // Create ripple effect span
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect(); // Get button size and position
-                const size = Math.max(rect.width, rect.height); // Determine ripple size
-                const x = e.clientX - rect.left - size / 2; // Calculate click position relative to button
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px'; // Set ripple size
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.style.position = 'absolute';
-                ripple.style.borderRadius = '50%'; // Make it circular
-                ripple.style.background = 'rgba(255, 255, 255, 0.3)'; // Semi-transparent white
-                ripple.style.transform = 'scale(0)'; // Start small
-                ripple.style.animation = 'ripple 0.6s linear'; // Apply ripple animation
-                ripple.style.pointerEvents = 'none'; // Don't block clicks
-                
-                this.style.position = 'relative'; // Set button position for ripple positioning
-                this.style.overflow = 'hidden'; // Hide overflowing ripple
-                this.appendChild(ripple); // Add ripple to button
-                
+        // Get the Apple Music button by its ID
+        const appleMusicButton = document.getElementById('appleMusicButton');
+
+        // Add event listener for click animation
+        if (appleMusicButton) {
+            appleMusicButton.addEventListener('click', function() {
+                this.classList.add('clicked'); // Add the 'clicked' class
                 setTimeout(() => {
-                    ripple.remove(); // Remove ripple after animation
-                }, 600);
+                    this.classList.remove('clicked'); // Remove the 'clicked' class after a short delay
+                }, 100); // Animation duration
             });
-        });
+        }
 
         // Add ripple animation CSS to the head
         const style = document.createElement('style');
@@ -1314,4 +1392,3 @@
     </script>
 </body>
 </html>
-�
