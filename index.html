@@ -251,16 +251,23 @@
 
         /* --- Apple Music Playlist Section Styles --- */
         :root {
-            --apple-bg: #000; /* Dark background for the section */
             --apple-card-bg: #1a1a1a; /* Darker card background */
             --apple-text-primary: #ffffff; /* White text */
-            --apple-text-secondary: #cccccc; /* Light gray text */
+            --apple-text-secondary: #cccccc; /* Light grey text */
             --apple-blue: #007aff; /* Apple blue remains */
             --apple-border: #333333; /* Darker border for dark theme */
         }
         .apple-music-section {
             padding: 60px 0; /* Reduced padding for shorter section */
-            background-color: var(--apple-bg);
+            /* Gradient background based on moon image colors, fading to black at the bottom */
+            background: linear-gradient(to bottom, 
+                #8B4513 0%, /* SaddleBrown - dark brown */
+                #A0522D 25%, /* Sienna - reddish brown */
+                #CD853F 50%, /* Peru - lighter brown/orange */
+                #D2B48C 75%, /* Tan - light brown/beige */
+                rgba(0, 0, 0, 0.5) 95%, /* Semi-transparent black for shadow effect */
+                #000000 100% /* Fully black at the very bottom */
+            );
             color: var(--apple-text-primary);
         }
         .apple-music-section .section-title {
@@ -345,7 +352,15 @@
         .apple-music-section-title {
             font-size: 1.25rem; /* 20px */
             font-weight: 600;
-            color: var(--apple-text-primary);
+            color: var(--apple-text-primary); /* Default to white */
+        }
+        /* New class for gradient text within the title */
+        .playlist-gradient-text {
+            background: linear-gradient(to right, #8B4513, #CD853F, #D2B48C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent; /* Fallback for browsers that don't support text-fill-color */
         }
         .apple-music-text-secondary {
             color: var(--apple-text-secondary);
@@ -1039,8 +1054,10 @@
                                 <img alt="[Bild eines Vollmonds]" class="rounded-xl w-full h-full object-cover" src="assets/unnamed (1).jpg"/>
                             </div>
                             <div class="mt-6 space-y-1">
-                                <h1 class="apple-music-title">Rap Life</h1>
-                                <p class="apple-music-subtitle">Apple Music Hip-Hop</p>
+                                <!-- Changed "Rap Life" to "Nasheeds" -->
+                                <h1 class="apple-music-title">Nasheeds</h1>
+                                <!-- Changed "Apple Music Hip-Hop" to "von Anthony" -->
+                                <p class="apple-music-subtitle">von Anthony</p>
                             </div>
                             <div class="mt-4">
                                 <!-- Changed button to anchor tag and added click animation -->
@@ -1055,8 +1072,10 @@
                         <div class="apple-music-card-right">
                             <div class="space-y-6">
                                 <div>
-                                    <h2 class="apple-music-section-title">About this playlist</h2>
-                                    <p class="apple-music-text-secondary mt-2 leading-relaxed">The best of what's next. Our editors are always updating this playlist with new music. If you hear something you like, add it to your library.</p>
+                                    <!-- Changed "About this playlist" to "Nasheeds. Meine Playlist." -->
+                                    <h2 class="apple-music-section-title">Nasheeds. <span class="playlist-gradient-text">Meine Playlist.</span></h2>
+                                    <!-- Updated the description text here -->
+                                    <p class="apple-music-text-secondary mt-2 leading-relaxed">Nasheeds. Eine Playlist, welche nicht nur entspannt, sondern einen an das Wesentliche erinnert.</p>
                                 </div>
                                 <div class="apple-music-border-top"></div>
                                 <div>
@@ -1070,7 +1089,7 @@
                                             </div>
                                         </li>
                                         <li class="apple-music-list-item">
-                                            <img alt="Artist photo" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvl2KhFKf4kR_BT32ggIPkNkO3iuESSG14d72wEyGea1SrILBlbFGiyTy_cSSlwJQsfNxAD4orhoAFo2Y5im_YDqyj8kqgauzhBOkx8MFexMIdTK9rvfq1z0bJl4wjJeDcmZIvzwd3FOm98EzWIAPXD21KAtjm_8zF5uDqgiBLH5xamCffRBQx3urTrGSiYlzuWWOp4neEAHk4HX8pib0ILygRwO7V-MzDNtS6kzZswRkMRDBW6viX6APllGTP075lrf6PIacPxK8"/>
+                                            <img alt="Artist photo" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvl2KhFKf4kR_BT32ggIPkNkO3iuESSG14d72wEyGea1SrILBlbFGiyTy_cSSlwJQsfNxAD4orhoAFo2Y5im_YDqyj8kqgauzhBOkx8MFexMIdTK9rvfq1z0bJl4wjJeDcmZIvzwd3FOm98EzWI2fDcmZIvzwd3FOm98EzWIAPXD21KAtjm_8zF5uDqgiBLH5xamCffRBQx3urTrGSiYlzuWWOp4neEAHk4HX8pib0ILygRwO7V-MzDNtS6kzZswRkMRDBW6viX6APllGTP075lrf6PIacPxK8"/>
                                             <div>
                                                 <p class="font-semibold text-[var(--apple-text-primary)]">Drake</p>
                                                 <p class="text-sm apple-music-text-secondary">Toronto, ON</p>
