@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -277,12 +277,15 @@
             margin-bottom: 30px; /* Halved margin-bottom */
         }
         .apple-music-card {
-            background-color: var(--apple-card-bg);
+            background-color: rgba(0, 0, 0, 0.2); /* Light transparency */
+            backdrop-filter: blur(15px); /* Simple blur */
+            -webkit-backdrop-filter: blur(15px); /* Webkit compatibility */
             border-radius: 1.5rem; /* 24px */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
             overflow: hidden;
             display: grid;
             grid-template-columns: 1fr;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Keep existing shadow */
         }
         @media (min-width: 768px) {
             .apple-music-card {
@@ -297,7 +300,10 @@
             text-align: center;
         }
         .apple-music-card-right {
-            background-color: #0a0a0a; /* Slightly different dark background for contrast */
+            background-color: rgba(0, 0, 0, 0.2); /* Light transparency for right side */
+            backdrop-filter: blur(15px); /* Simple blur for right side */
+            -webkit-backdrop-filter: blur(15px); /* Webkit compatibility for right side */
+            border-left: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for right side */
             padding: 2rem 3rem;
         }
         .apple-music-image {
