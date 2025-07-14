@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             background: #000;
             color: #fff;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
         }
 
         /* Navigation Bar styles */
@@ -1085,27 +1085,30 @@
                                 </div>
                                 <div class="apple-music-border-top"></div>
                                 <div>
-                                    <h3 class="apple-music-section-title">Featured Artists</h3>
+                                    <h3 class="apple-music-section-title">In dieser Playlist:</h3>
                                     <ul class="mt-3 space-y-3">
                                         <li class="apple-music-list-item">
-                                            <img alt="Artist photo" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2Ga40sjFTG8TB0hTNSIBCRF2oBKIDr_rJRCV2Nkx6GNwTAZwomjpUadfsUJO--LXiK-MOrh0adFnk-Zf8Q2Pqw6weAFtXqEf8WIPR1OqmvrfsEp6fmyA8UVlP41lMoYoZbek2CWxvoqbOD_8tyWhA1NaA6fqvjutWkR-GYfX6LyGqWsZ5bc7c1GC8yHaYLjx_VXDB6zV1aFkQg78Hq514OH8iD6UxYQ6uKK4Lsus_2IvHUc0KksxrqQD9uQPw3IviqFAAk3zuGA4"/>
+                                            <!-- Updated image source to IMG_8341.jpg -->
+                                            <img alt="Artist photo" class="w-12 h-12 rounded-full object-cover" src="assets/IMG_8341.jpg"/>
                                             <div>
-                                                <p class="font-semibold text-[var(--apple-text-primary)]">Kendrick Lamar</p>
-                                                <p class="text-sm apple-music-text-secondary">Compton, CA</p>
+                                                <p class="font-semibold text-[var(--apple-text-primary)]">Artist 1 Name</p>
+                                                <p class="text-sm apple-music-text-secondary">Location 1</p>
                                             </div>
                                         </li>
                                         <li class="apple-music-list-item">
-                                            <img alt="Artist photo" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvl2KhFKf4kR_BT32ggIPkNkO3iuESSG14d72wEyGea1SrILBlbFGiyTy_cSSlwJQsfNxAD4orhoAFo2Y5im_YDqyj8kqgauzhBOkx8MFexMIdTK9rvfq1z0bJl4wjJeDcmZIvzwd3FOm98EzWI2fDcmZIvzwd3FOm98EzWIAPXD21KAtjm_8zF5uDqgiBLH5xamCffRBQx3urTrGSiYlzuWWOp4neEAHk4HX8pib0ILygRwO7V-MzDNtS6kzZswRkMRDBW6viX6APllGTP075lrf6PIacPxK8"/>
+                                            <!-- Updated image source to IMG_8340.jpg -->
+                                            <img alt="Artist photo" class="w-12 h-12 rounded-full object-cover" src="assets/IMG_8340.jpg"/>
                                             <div>
-                                                <p class="font-semibold text-[var(--apple-text-primary)]">Drake</p>
-                                                <p class="text-sm apple-music-text-secondary">Toronto, ON</p>
+                                                <p class="font-semibold text-[var(--apple-text-primary)]">Artist 2 Name</p>
+                                                <p class="text-sm apple-music-text-secondary">Location 2</p>
                                             </div>
                                         </li>
                                         <li class="apple-music-list-item">
-                                            <img alt="Artist photo" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2A2TmYK1w43wBJAu_CrSMR1u4vKlOJqZXfInJA24uZ0K1GslGHRaiHYVJWNjY7Ib-ObyVzyCkb8Neq8oji_tsFTOdG1k3upL_Xj9jENMFDKKoPB8fsyRxEJIYwL22-AZAfL2c6uSWSnl45JfCdFn4W4ZhMgwMdJuQK51bmgM9mJLPFiOpLaZNxk4kAoTSyl2iwMKVESSJ2fi-Zr9DqO0iq6FVceIdX-X0pgoNUb-kFvF77Niv0S8cXX5ICmf8k2nBRji-w1uV4Jg"/>
+                                            <!-- Updated image source to IMG_8990.JPEG -->
+                                            <img alt="Artist photo" class="w-12 h-12 rounded-full object-cover" src="assets/IMG_8990.JPEG"/>
                                             <div>
-                                                <p class="font-semibold text-[var(--apple-text-primary)]">J. Cole</p>
-                                                <p class="text-sm apple-music-text-secondary">Fayetteville, NC</p>
+                                                <p class="font-semibold text-[var(--apple-text-primary)]">Artist 3 Name</p>
+                                                <p class="text-sm apple-music-text-secondary">Location 3</p>
                                             </div>
                                         </li>
                                     </ul>
@@ -1415,6 +1418,10 @@
         `;
         document.head.appendChild(style);
 
+        // Ensure scrolling is enabled on page load/refresh
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.body.style.overflow = ''; // Reset overflow to default
+        });
     </script>
 </body>
 </html>
